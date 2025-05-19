@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/narradoresdigitales/341-cse-project2/issues"
   },
-  "homepage": "https://github.com/narradoresdigitales/341-cse-project2#readme"
+  "homepage": "https://github.com/narradoresdigitales/341-cse-project2#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
