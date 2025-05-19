@@ -4,7 +4,7 @@ const router = express.Router();
 const studentControllers = require('../controllers/students');
 
 router.get('/', studentControllers.getAll);
-
+router.get('/:id', studentControllers.getSingle);
 
 
 
