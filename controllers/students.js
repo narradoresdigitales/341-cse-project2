@@ -13,7 +13,7 @@ const getAll = async (req, res) => {
 };
 
 const getSingle = async (req, res) => {
-    //swagger.tags=['Contacts']
+    //swagger.tags=['Students']
     const userId = new ObjectId(req.params.id);
     const result = await mongodb.getDatabase().db().collection('students').findOne({ _id: userId });
     if (result) {
@@ -25,6 +25,7 @@ const getSingle = async (req, res) => {
 };
 
 const createStudent = async (req, res) => {
+    //swagger.tags=['Students']
     const student = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -45,6 +46,7 @@ const createStudent = async (req, res) => {
 };
 
 const updateStudent = async (req, res) => {
+    //swagger.tags=['Students']
     const userId = new ObjectId(req.params.id);
     const student = {
         firstName: req.body.firstName,
@@ -66,6 +68,7 @@ const updateStudent = async (req, res) => {
 };
 
     const deleteStudent = async (req, res) => {
+        //swagger.tags=['Students']
         const userId = new ObjectId(req.params.id);
         const response = await mongodb.getDatabase().db().collection('students').deleteOne( {_id: userId}, true);
         if (response.deletedCount > 0) {
