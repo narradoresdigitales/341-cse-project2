@@ -24,8 +24,64 @@ const getSingle = async (req, res) => {
     }        
 };
 
+const createStudent = async (req, res) => {
+    const student = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        gradeLevel: req.body.gradeLevel,
+        major: req.body.major,
+        gpa: req.body.gpa,
+        enrollmentDate: req.body.enrollmentDate,
+        isActive: req.body.isActive
+        
+    };
+    const response = await mongodb.getDatabase().db().collection('students').insertOne(student);
+    if (response.acknowledged) {
+        res.status(201).send();
+    } else {
+        res.status(500).json(response.error || 'Some error occurred while updating the user.');
+    }
+};
+
+const updateStudent = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const student = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        gradeLevel: req.body.gradeLevel,
+        major: req.body.major,
+        gpa: req.body.gpa,
+        enrollmentDate: req.body.enrollmentDate,
+        isActive: req.body.isActive 
+        
+    };
+    const response = await mongodb.getDatabase().db().collection('students').replaceOne( {_id: userId}, student);
+    if (response.modifiedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || 'Some error occurred while updating the user.');
+    }
+};
+
+    const deleteStudent = async (req, res) => {
+        const userId = new ObjectId(req.params.id);
+        const response = await mongodb.getDatabase().db().collection('students').deleteOne( {_id: userId}, true);
+        if (response.deletedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(404).json({ message: 'Student not found.'});
+    }
+};
+
+
+
 module.exports = {
     getAll,
-    getSingle
+    getSingle, 
+    createStudent,
+    updateStudent,
+    deleteStudent
 
 };
