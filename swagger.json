@@ -5,19 +5,63 @@
     "description": "Students Api",
     "version": "1.0.0"
   },
-  "host": "three41-cse-project2.onrender.com",
+  "host": "localhost: 3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "https",
+    "http"
   ],
   "paths": {
     "/": {
       "get": {
-        "tags": [],
         "description": "",
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "courseName": {
+                  "example": "any"
+                },
+                "instructor": {
+                  "example": "any"
+                },
+                "credits": {
+                  "example": "any"
+                },
+                "isAvailable": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }
@@ -153,6 +197,86 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "courseName": {
+                  "example": "any"
+                },
+                "instructor": {
+                  "example": "any"
+                },
+                "credits": {
+                  "example": "any"
+                },
+                "isAvailable": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
           }
         }
       },
