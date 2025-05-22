@@ -5,10 +5,9 @@
     "description": "Students / Courses Api",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "three41-cse-project2.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
