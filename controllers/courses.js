@@ -3,6 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 // Get all courses
 const getAllCourses = async (req, res) => {
+    //swagger.tags=['Courses']
     try {
         const result = await mongodb.getDatabase().db().collection('courses').find().toArray();
         res.setHeader('Content-Type', 'application/json');
