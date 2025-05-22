@@ -14,12 +14,12 @@ const validateRequest = require('../middleware/validateRequest');
 
 router.get('/', coursesController.getAllCourses);
 
-router.get('/:id', getCourseValidationRules(),coursesController.getCourse);
+router.get('/:id', getCourseValidationRules(),validateRequest,coursesController.getCourse);
 
-router.post('/', createCourseValidationRules(),coursesController.createCourse);
+router.post('/', createCourseValidationRules(),validateRequest, coursesController.createCourse);
 
-router.put('/:id', updateCourseValidationRules(),coursesController.updateCourse);
+router.put('/:id', updateCourseValidationRules(),validateRequest,coursesController.updateCourse);
 
-router.delete('/:id', deleteCourseValidationRules(),coursesController.deleteCourse);
+router.delete('/:id', deleteCourseValidationRules(),validateRequest,coursesController.deleteCourse);
 
 module.exports = router;
