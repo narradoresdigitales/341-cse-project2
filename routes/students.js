@@ -15,13 +15,13 @@ const validateRequest = require('../middleware/validateRequest');
 
 router.get('/', studentsController.getAll);
 
-router.get('/:id', getStudentValidationRules(),validateRequest, studentsController.getSingle);
+router.get('/:id', getStudentValidationRules(),validateRequest,studentsController.getSingle);
 
-router.post('/', createStudentValidationRules(), validateRequest, studentsController.createStudent);
+router.post('/', createStudentValidationRules(), validateRequest,studentsController.createStudent);
 
-router.put('/:id', updateStudentValidationRules(), validateRequest, studentsController.updateStudent);
+router.put('/:id', updateStudentValidationRules(), validateRequest,studentsController.updateStudent);
 
-router.delete('/:id', deleteStudentValidationRules(), validateRequest, studentsController.deleteStudent);
+router.delete('/:id', deleteStudentValidationRules(), validateRequest,studentsController.deleteStudent);
 
 
 

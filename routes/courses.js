@@ -16,7 +16,7 @@ router.get('/', coursesController.getAllCourses);
 
 router.get('/:id', getCourseValidationRules(),validateRequest,coursesController.getCourse);
 
-router.post('/', createCourseValidationRules(),validateRequest, coursesController.createCourse);
+router.post('/', createCourseValidationRules(),validateRequest,coursesController.createCourse);
 
 router.put('/:id', updateCourseValidationRules(),validateRequest,coursesController.updateCourse);
 
