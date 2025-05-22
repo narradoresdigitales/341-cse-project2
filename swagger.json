@@ -1,63 +1,26 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "341-CSE-project2",
-    "description": "Students / Courses Api",
+    "title": "Students Api",
+    "description": "Students Api",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https",
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
     "/": {
       "get": {
-        "description": "",
-        "produces": [
-          "application/json"
+        "tags": [
+          "Hello World"
         ],
+        "description": "",
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      },
-      "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "courseName": {
-                  "example": "any"
-                },
-                "instructor": {
-                  "example": "any"
-                },
-                "credits": {
-                  "example": "any"
-                },
-                "isAvailable": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -74,6 +37,9 @@
     },
     "/students/": {
       "get": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -85,6 +51,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "parameters": [
           {
@@ -133,6 +102,9 @@
     },
     "/students/{id}": {
       "get": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "produces": [
           "application/json"
@@ -158,6 +130,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "parameters": [
           {
@@ -213,6 +188,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "parameters": [
           {
@@ -235,8 +213,67 @@
         }
       }
     },
-    "/{id}": {
+    "/courses/": {
       "get": {
+        "tags": [
+          "Courses"
+        ],
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Courses"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "courseName": {
+                  "example": "any"
+                },
+                "instructor": {
+                  "example": "any"
+                },
+                "credits": {
+                  "example": "any"
+                },
+                "isAvailable": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/courses/{id}": {
+      "get": {
+        "tags": [
+          "Courses"
+        ],
         "description": "",
         "parameters": [
           {
@@ -256,6 +293,9 @@
         }
       },
       "put": {
+        "tags": [
+          "Courses"
+        ],
         "description": "",
         "parameters": [
           {
@@ -296,6 +336,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Courses"
+        ],
         "description": "",
         "parameters": [
           {
