@@ -10,6 +10,8 @@ const {
     deleteStudentValidationRules,
 } = require('../validations/studentValidation');
 
+const { isAuthenticated } =  require("../middleware/authenticate");
+
 
 const validateRequest = require('../middleware/validateRequest');
 
@@ -17,11 +19,11 @@ router.get('/', studentsController.getAll);
 
 router.get('/:id', getStudentValidationRules(),validateRequest,studentsController.getSingle);
 
-router.post('/', createStudentValidationRules(), validateRequest,studentsController.createStudent);
+router.post('/', isAuthenticated, createStudentValidationRules(), validateRequest,studentsController.createStudent);
 
-router.put('/:id', updateStudentValidationRules(), validateRequest,studentsController.updateStudent);
+router.put('/:id', isAuthenticated, updateStudentValidationRules(), validateRequest,studentsController.updateStudent);
 
-router.delete('/:id', deleteStudentValidationRules(), validateRequest,studentsController.deleteStudent);
+router.delete('/:id', isAuthenticated, deleteStudentValidationRules(), validateRequest,studentsController.deleteStudent);
 
 
 

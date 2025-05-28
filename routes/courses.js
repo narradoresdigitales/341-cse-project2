@@ -11,15 +11,17 @@ const {
 
 const validateRequest = require('../middleware/validateRequest');
 
+const { isAuthenticated } =  require("../middleware/authenticate");
+
 
 router.get('/', coursesController.getAllCourses);
 
-router.get('/:id', getCourseValidationRules(),validateRequest,coursesController.getCourse);
+router.get('/:id', isAuthenticated, getCourseValidationRules(),validateRequest,coursesController.getCourse);
 
-router.post('/', createCourseValidationRules(),validateRequest,coursesController.createCourse);
+router.post('/', isAuthenticated, createCourseValidationRules(),validateRequest,coursesController.createCourse);
 
-router.put('/:id', updateCourseValidationRules(),validateRequest,coursesController.updateCourse);
+router.put('/:id', isAuthenticated, updateCourseValidationRules(),validateRequest,coursesController.updateCourse);
 
-router.delete('/:id', deleteCourseValidationRules(),validateRequest,coursesController.deleteCourse);
+router.delete('/:id', isAuthenticated, deleteCourseValidationRules(),validateRequest,coursesController.deleteCourse);
 
 module.exports = router;
