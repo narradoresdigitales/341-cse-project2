@@ -67,11 +67,12 @@ const updateCourse = async (req, res) => {
 
     try { 
         const response = await mongodb.getDatabase().db().collection('courses').replaceOne({ _id: courseId }, course);
+
         if (response.modifiedCount > 0) { 
         res.status(204).send();
-    } else {
+        } else {
         res.status(404).json({ message: 'Course not found' });
-    }
+        } 
     } catch (err) {
         console.error(err); 
         res.status(500).json({ message: 'Server error while updating the course.'});
