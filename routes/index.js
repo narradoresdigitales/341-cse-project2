@@ -11,7 +11,14 @@ router.get('/', (req, res) => {
 router.use('/students', require('./students'));
 router.use('/courses', require('./courses'));
 
-router.get('/login', passport.authenticate('github'), (req, res) => {});
+router.get('/login', passport.authenticate('github'));
+
+router.get('/github/callback',
+    passport.authenticate('github', { failureRedirect: '/'}),
+    (req, res) => {
+        res.redirect('/');
+    }
+);
 
 router.get('/logout', function(req,res, next) {
     req.logout(function(err) {
