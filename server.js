@@ -9,13 +9,11 @@ const cors = require('cors');
 
 app.use(bodyParser.json());
 
-
-
 const port = process.env.PORT || 3000;
 
-app
-.use(bodyParser.json())
-.use(session ({
+app.use(bodyParser.json())
+
+app.use(session ({
     secret: "secret" ,
     resave: false ,
     saveUninitialized: true ,
@@ -38,6 +36,7 @@ app
 .use(cors({ methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'
 ]}))
 .use(cors({ origin: '*'}))
+
 .use("/", require("./routes/index.js"));
 
 
@@ -45,9 +44,6 @@ process.on('uncaughtException', (err, origin) => {
     console.log(process.stderr.id, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
     process.exit(1);
 });
-
-
-app.use('/', require('./routes'));
 
 
 
@@ -70,12 +66,7 @@ passport.deserializeUser((user, done) => {
 
 app.get('/', (req, res) => { res.send(req.session.user !== undefined ? `Logged in as ${req.session.user.displayName}` : "Logged Out")});
 
-app.get('/github/callback', passport.authenticate('github', {
-    failureRedirect: '/api-docs', session: false }),
-    (req, res) => {
-        req.session.user = req.user;
-        res.redirect('/');
-    });
+
 
 
 
